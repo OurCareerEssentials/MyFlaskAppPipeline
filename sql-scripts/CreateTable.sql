@@ -1,0 +1,2 @@
+use employeeusers;
+CREATE TABLE userdtls(id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT, name VARCHAR(100), email VARCHAR(100), password VARCHAR (100), contact INTEGER, PRIMARY KEY (id));
