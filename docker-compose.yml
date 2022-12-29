@@ -1,0 +1,36 @@
+app:
+    build: .
+    volumes:
+      - .:/var/www/flaskapp        
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+    expose:
+      - "8000"
+    links:
+      - db
+    command: ["gunicorn", "-b", ":8000", "-w", "1", "app:app"]
+
+nginx:
+    build: .
+    dockerfile: Dockerfile.nginx
+    links:
+        - app
+    ports:
+        - "80:80"
+
+db:
+    image: mysql:5.6
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+        - "3306:3306"
+    environment:
+        MY_SERVICE_HOST: localhost
+        MYSQL_DATABASE: employeeusers
+        MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - ./sql-scripts:/docker-entrypoint-initdb.d 
+    

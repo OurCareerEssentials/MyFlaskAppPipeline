@@ -1,0 +1,4 @@
+FROM nginx
+MAINTAINER Rev
+
+COPY flaskapp.conf /etc/nginx/conf.d/default.conf
