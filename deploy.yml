@@ -1,0 +1,26 @@
+---
+- name: Deploy Script
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  become: true
+  become_method: sudo
+  vars:
+    repository_url: https://github.com/OurCareerEssentials/MyFlaskAppPipeline.git
+    repository_path: /flaskapp/
+  tasks:
+  - name: Install packages
+    apt: update_cache=yes name={{ item }} state=present
+    with_items:
+      - docker.io
+      - docker-compose
+      - docker
+
+  - name: Clone repository
+    git: repo='{{ repository_url }}' dest='{{ repository_path }}' force=yes
+
+  - name: Build and deploy app
+    shell: |
+      cd /flaskapp
+      docker-compose build
+      docker-compose up -d
