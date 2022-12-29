@@ -7,7 +7,7 @@ def configure_routes(app):
 
     app.secret_key = "sjdlfkjlsdfj"
     app.permanent_session_lifetime = timedelta(minutes=5)
-    app.config['MYSQL_HOST'] = os.getenv('MY_SERVICE_HOST')
+    app.config['MYSQL_HOST'] = os.getenv('MYSQL_SERVICE_HOST')
     app.config['MYSQL_USER'] = "root"
     app.config['MYSQL_PASSWORD'] = "rootpassword"
     app.config['MYSQL_DB'] = "employeeusers"   
