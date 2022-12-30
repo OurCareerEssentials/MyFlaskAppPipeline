@@ -7,7 +7,7 @@ app:
       FLASK_ENV: development
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
-      MY_SERVICE_HOST: 172.17.0.1
+      MYSQL_SERVICE_HOST: 172.17.0.1
     expose:
       - "8000"
     links:
