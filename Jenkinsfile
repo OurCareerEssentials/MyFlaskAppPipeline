@@ -12,7 +12,6 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                cd /MyFlaskAppPipeline
                 sh 'pytest test_unit_app.py'
                 sh 'pytest test_integration_app.py' 
                 sh 'pytest test_functional_app.py' 
