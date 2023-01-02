@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/OurCareerEssentials/MyFlaskAppPipeline.git']]])
-                git branch: 'main', url: 'https://github.com/OurCareerEssentials/MyFlaskAppPipeline.git'                                
-                sh 'cd /MyFlaskAppPipeline'
+                //checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/OurCareerEssentials/MyFlaskAppPipeline.git']]])
+                //git branch: 'main', url: 'https://github.com/OurCareerEssentials/MyFlaskAppPipeline.git'                                                
                 sh 'sudo docker-compose build'
                 sh 'sudo docker-compose up'
             }
