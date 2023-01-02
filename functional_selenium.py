@@ -10,7 +10,7 @@ import time as t
 PATH = "C:\Development\PythonFlask\drivers\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
-driver.get("http://127.0.0.1:5000/")
+driver.get("http://"+ os.getenv('MYSQL_SERVICE_HOST') +":5000/")
 t.sleep(2)
 driver.find_element_by_name("uname").send_keys("Ram")
 t.sleep(2)
