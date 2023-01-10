@@ -28,8 +28,8 @@ pipeline {
         stage('Deploy') { 
             steps {
                 //sh 'kubectl delete deploy flaskapp-deployment'
-                sh 'kubectl apply -f mysql-deployment.yaml --context flask-pipeline-cluster'
-                sh 'kubectl apply -f deployment.yaml --context flask-pipeline-cluster'
+                sh 'kubectl apply -f mysql-deployment.yaml'
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
