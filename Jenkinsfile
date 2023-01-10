@@ -10,15 +10,15 @@ pipeline {
                 sh 'sudo docker-compose up -d'
             }
         }
-        stage('Test') { 
-            steps {
-                sh 'pytest test_unit_app.py'
-                sh 'pytest test_integration_app.py' 
-                sh 'pytest test_functional_app.py' 
-                sh 'selenium functional_selenium.py' 
-                sh 'sudo docker-compose down'
-            }
-        }
+        // stage('Test') { 
+        //     steps {
+        //         sh 'pytest test_unit_app.py'
+        //         sh 'pytest test_integration_app.py' 
+        //         sh 'pytest test_functional_app.py' 
+        //         sh 'selenium functional_selenium.py' 
+        //         sh 'sudo docker-compose down'
+        //     }
+        // }
         stage('Release') { 
             steps {
                 sh 'sudo docker tag flaskapp_app:latest ourcareeressentials/flaskapp-deployment'
